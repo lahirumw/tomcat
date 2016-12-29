@@ -1,0 +1,17 @@
+
+>>>>>> How to configure tomcat ssl
+
+> keytool -genkey -alias tomcat -keyalg RSA
+
+* answer the questions
+* this will create .keystore file in your home directory
+* Open the server.xml file in tomcat conf folder
+* Paste below lines there
+
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+		keystoreFile="/home/lahiru/.keystore" keystorePass="tomcat"
+               maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
+               clientAuth="false" sslProtocol="TLS" />
+
+* restart the server
+* now ssl will enabled
